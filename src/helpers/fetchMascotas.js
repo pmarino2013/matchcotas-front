@@ -10,4 +10,19 @@ const traerMascotas = async () => {
   }
 };
 
-export { traerMascotas };
+const actualizarMacota = async (value) => {
+  try {
+    const response = await fetch(url + "/" + value, {
+      method: "PUT",
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      },
+    });
+    const data = response.json();
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export { traerMascotas, actualizarMacota };

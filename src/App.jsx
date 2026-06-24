@@ -1,23 +1,25 @@
 import { useEffect, useState } from "react";
-import { traerMascotas } from "./helpers/fetchMascotas";
+import { traerMascotas, actualizarMacota } from "./helpers/fetchMascotas";
 import { traerMatches, agregarMatches } from "./helpers/fetchMatches";
 import CardMascotasApp from "./components/CardMascotasApp";
 import BoxMatchesApp from "./components/BoxMatchesApp";
 
 const App = () => {
   const [mascotas, setMascotas] = useState([]);
-  const [matches, setMatches] = useState([]);
+  const [countMatches, setCountMatches] = useState(0);
   const [index, setIndex] = useState(0);
+
   useEffect(() => {
     traerMascotas().then(({ mascotas }) => {
       setMascotas(mascotas);
     });
-  }, []);
+  }, [countMatches]);
+
   useEffect(() => {
     traerMatches().then(({ matches }) => {
-      setMatches(matches);
+      setCountMatches(matches.length);
     });
-  }, [matches]);
+  }, []);
 
   const pasarMascota = () => {
     if (index + 1 < mascotas.length) {
@@ -27,21 +29,21 @@ const App = () => {
     }
   };
 
-  const addMatches = () => {
+  const addMatches = async () => {
     const datos = {
       mascota_id: mascotas[index]._id,
     };
-    agregarMatches(datos).then((respuesta) => {
-      console.log(respuesta);
-      pasarMascota();
-    });
+    await agregarMatches(datos);
+    setCountMatches(countMatches + 1);
+    await actualizarMacota(mascotas[index]._id);
+    pasarMascota();
   };
 
   return (
     <div>
       <div className="flex justify-between items-center mx-5">
         <h1 className="text-6xl">MatchCotas</h1>
-        <BoxMatchesApp matches={matches} />
+        <BoxMatchesApp matches={countMatches} />
       </div>
       <div className="flex justify-center mt-5">
         {mascotas.length > 0 ? (

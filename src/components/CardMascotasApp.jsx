@@ -1,4 +1,18 @@
+import { useEffect } from "react";
+
 const CardMascotasApp = ({ mascotas, index, pasarMascota, addMatches }) => {
+  useEffect(() => {
+    setTimeout(() => {
+      document.querySelector("article").classList.remove("card-flip");
+    }, 1200);
+  }, [index]);
+
+  const pasarTarjetaFlip = () => {
+    document.querySelector("article").classList.add("card-flip");
+    setTimeout(() => {
+      pasarMascota();
+    }, 1000);
+  };
   return (
     <article className="bg-white shadow-lg h-96 w-70  rounded-lg flex flex-col justify-between">
       <header>
@@ -33,7 +47,7 @@ const CardMascotasApp = ({ mascotas, index, pasarMascota, addMatches }) => {
         >
           <i className="bi bi-heart"></i>
         </div>
-        <div className="text-2xl cursor-pointer" onClick={pasarMascota}>
+        <div className="text-2xl cursor-pointer" onClick={pasarTarjetaFlip}>
           <i className="bi bi-x-lg"></i>
         </div>
       </footer>

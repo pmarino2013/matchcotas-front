@@ -3,3 +3,26 @@
 body {
   background-color: #eaebec;
 }
+
+.card-flip {
+  animation: flip 1.5s ease-in-out;
+  transform-style: preserve-3d;
+  transform-origin: center;
+}
+
+.card-flip,
+.card-flip * {
+  backface-visibility: hidden;
+}
+
+@keyframes flip {
+  0% {
+    transform: perspective(900px) rotateY(0deg);
+  }
+  50% {
+    transform: perspective(900px) rotateY(180deg);
+  }
+  100% {
+    transform: perspective(900px) rotateY(0deg);
+  }
+}
