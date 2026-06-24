@@ -3,11 +3,13 @@ import { traerMascotas, actualizarMacota } from "./helpers/fetchMascotas";
 import { traerMatches, agregarMatches } from "./helpers/fetchMatches";
 import CardMascotasApp from "./components/CardMascotasApp";
 import BoxMatchesApp from "./components/BoxMatchesApp";
+import ModalMatches from "./components/ModalMatches";
 
 const App = () => {
   const [mascotas, setMascotas] = useState([]);
   const [countMatches, setCountMatches] = useState(0);
   const [index, setIndex] = useState(0);
+  const [show, setShow] = useState(false);
 
   useEffect(() => {
     traerMascotas().then(({ mascotas }) => {
@@ -40,26 +42,29 @@ const App = () => {
   };
 
   return (
-    <div>
-      <div className="flex justify-between items-center mx-5">
-        <h1 className="text-6xl">MatchCotas</h1>
-        <BoxMatchesApp matches={countMatches} />
+    <>
+      <div>
+        <div className="flex justify-between items-center mx-5">
+          <h1 className="text-6xl">MatchCotas</h1>
+          <BoxMatchesApp matches={countMatches} funcShow={setShow} />
+        </div>
+        <div className="flex justify-center mt-5">
+          {mascotas.length > 0 ? (
+            <CardMascotasApp
+              mascotas={mascotas}
+              index={index}
+              pasarMascota={pasarMascota}
+              addMatches={addMatches}
+            />
+          ) : (
+            <div className="h-80 flex justify-center items-center">
+              <h3 className="text-4xl">🐶No hay mascotas</h3>
+            </div>
+          )}
+        </div>
       </div>
-      <div className="flex justify-center mt-5">
-        {mascotas.length > 0 ? (
-          <CardMascotasApp
-            mascotas={mascotas}
-            index={index}
-            pasarMascota={pasarMascota}
-            addMatches={addMatches}
-          />
-        ) : (
-          <div className="h-80 flex justify-center items-center">
-            <h3 className="text-4xl">🐶No hay mascotas</h3>
-          </div>
-        )}
-      </div>
-    </div>
+      {show && <ModalMatches modalHide={setShow} />}
+    </>
   );
 };
 

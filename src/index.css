@@ -15,6 +15,15 @@ body {
   backface-visibility: hidden;
 }
 
+.overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.457);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 @keyframes flip {
   0% {
     transform: perspective(900px) rotateY(0deg);
