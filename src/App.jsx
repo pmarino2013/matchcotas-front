@@ -36,14 +36,9 @@ const App = () => {
     const datos = {
       mascota_id: mascotas[index]._id,
     };
+    await actualizarMacota(mascotas[index]._id, { match: true });
     await agregarMatches(datos);
     setCountMatches(countMatches + 1);
-    await actualizarMacota(mascotas[index]._id, { match: true });
-    console.log(index);
-    console.log("mascotas: " + mascotas.length);
-    // Calcular el siguiente índice sin depender del estado
-    const nextIndex = index + 1 < mascotas.length ? index + 1 : 0;
-    setIndex(nextIndex);
   };
 
   const deleteMatches = async (idMascota, idMatch) => {

@@ -1,17 +1,17 @@
-// import { useEffect } from "react";
+import { useEffect } from "react";
 
 const CardMascotasApp = ({ mascotas, index, pasarMascota, addMatches }) => {
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     document.querySelector("article").classList.remove("card-flip");
-  //   }, 1200);
-  // }, [index]);
+  useEffect(() => {
+    setTimeout(() => {
+      document.querySelector("article").classList.remove("card-flip");
+    }, 1200);
+  }, [index]);
 
   const pasarTarjetaFlip = () => {
-    // document.querySelector("article").classList.add("card-flip");
-    // setTimeout(() => {
-    pasarMascota();
-    // }, 1000);
+    document.querySelector("article").classList.add("card-flip");
+    setTimeout(() => {
+      pasarMascota();
+    }, 1000);
   };
   return (
     <>
