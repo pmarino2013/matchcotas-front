@@ -1,6 +1,10 @@
 import { useEffect, useState } from "react";
 import { traerMascotas, actualizarMacota } from "./helpers/fetchMascotas";
-import { traerMatches, agregarMatches } from "./helpers/fetchMatches";
+import {
+  traerMatches,
+  agregarMatches,
+  borrarMatch,
+} from "./helpers/fetchMatches";
 import CardMascotasApp from "./components/CardMascotasApp";
 import BoxMatchesApp from "./components/BoxMatchesApp";
 import ModalMatches from "./components/ModalMatches";
@@ -37,15 +41,21 @@ const App = () => {
     };
     await agregarMatches(datos);
     setCountMatches(countMatches + 1);
-    await actualizarMacota(mascotas[index]._id);
+    await actualizarMacota(mascotas[index]._id, { match: true });
     pasarMascota();
+  };
+
+  const deleteMatches = async (idMascota, idMatch) => {
+    await actualizarMacota(idMascota, { match: false });
+    await borrarMatch(idMatch);
+    setCountMatches(countMatches - 1);
   };
 
   return (
     <>
-      <div>
-        <div className="flex justify-between items-center mx-5">
-          <h1 className="text-6xl">MatchCotas</h1>
+      <div className="lilita-one-regular">
+        <div className="flex justify-between items-center mx-5 mb-7">
+          <h1 className="text-6xl lilita-one-regular">MatchCotas</h1>
           <BoxMatchesApp matches={countMatches} funcShow={setShow} />
         </div>
         <div className="flex justify-center mt-5">
@@ -63,7 +73,13 @@ const App = () => {
           )}
         </div>
       </div>
-      {show && <ModalMatches modalHide={setShow} />}
+      {show && (
+        <ModalMatches
+          modalHide={setShow}
+          countMatches={countMatches}
+          deleteMatches={deleteMatches}
+        />
+      )}
     </>
   );
 };

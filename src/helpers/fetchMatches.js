@@ -26,4 +26,19 @@ const agregarMatches = async (value) => {
   }
 };
 
-export { traerMatches, agregarMatches };
+const borrarMatch = async (id) => {
+  try {
+    const response = await fetch(url + "/" + id, {
+      method: "DELETE",
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      },
+    });
+    const data = response.json();
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export { traerMatches, agregarMatches, borrarMatch };

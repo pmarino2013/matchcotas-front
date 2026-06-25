@@ -10,10 +10,11 @@ const traerMascotas = async () => {
   }
 };
 
-const actualizarMacota = async (value) => {
+const actualizarMacota = async (value, estado) => {
   try {
     const response = await fetch(url + "/" + value, {
       method: "PUT",
+      body: JSON.stringify(estado),
       headers: {
         "Content-type": "application/json; charset=UTF-8",
       },
