@@ -10,8 +10,8 @@ const ModalMatches = ({ modalHide, countMatches, deleteMatches }) => {
   }, [countMatches]);
 
   return (
-    <div className="overlay lilita-one-regular">
-      <div className="bg-white w-lg min-h-80 rounded-2xl p-5">
+    <div className="overlay lilita-one-regular ">
+      <div className="bg-white w-lg min-h-80 rounded-2xl p-5  card-shadow">
         <section className="flex justify-between mx-3 mb-2">
           <h3 className="text-2xl">Tus MatchCotas🐶</h3>
           <button onClick={() => modalHide(false)} className="cursor-pointer">
@@ -32,7 +32,7 @@ const ModalMatches = ({ modalHide, countMatches, deleteMatches }) => {
                   className="absolute top-2 right-2 cursor-pointer text-red-700"
                   onClick={() => deleteMatches(item.mascota_id._id, item._id)}
                 >
-                  <i className="bi bi-x-lg "></i>
+                  <i className="bi bi-x-circle-fill"></i>
                 </div>
                 <h4 className="font-bold ms-3">{item.mascota_id.nombre}</h4>
               </article>

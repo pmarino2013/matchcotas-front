@@ -55,7 +55,9 @@ const App = () => {
     <>
       <div className="lilita-one-regular">
         <div className="flex justify-between items-center mx-5 mb-7">
-          <h1 className="text-6xl lilita-one-regular">MatchCotas</h1>
+          <h1 className="text-6xl lilita-one-regular texto-title">
+            MatchCotas
+          </h1>
           <BoxMatchesApp matches={countMatches} funcShow={setShow} />
         </div>
         <div className="flex justify-center mt-5">

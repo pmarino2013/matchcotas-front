@@ -14,7 +14,7 @@ const CardMascotasApp = ({ mascotas, index, pasarMascota, addMatches }) => {
     }, 1000);
   };
   return (
-    <article className="bg-white shadow-lg h-96 w-70  rounded-lg flex flex-col justify-between">
+    <article className="bg-white card-shadow h-96 w-70  rounded-lg flex flex-col justify-between">
       <header>
         <picture>
           <img
