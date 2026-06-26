@@ -33,6 +33,17 @@ body {
   backface-visibility: hidden;
 }
 
+.card-flip-reverse {
+  animation: flip-reverse 1.5s ease-in-out;
+  transform-style: preserve-3d;
+  transform-origin: center;
+}
+
+.card-flip-reverse,
+.card-flip-reverse * {
+  backface-visibility: hidden;
+}
+
 .overlay {
   position: absolute;
   inset: 0;
@@ -48,6 +59,18 @@ body {
   }
   50% {
     transform: perspective(900px) rotateY(180deg);
+  }
+  100% {
+    transform: perspective(900px) rotateY(0deg);
+  }
+}
+
+@keyframes flip-reverse {
+  0% {
+    transform: perspective(900px) rotateY(0deg);
+  }
+  50% {
+    transform: perspective(900px) rotateY(-180deg);
   }
   100% {
     transform: perspective(900px) rotateY(0deg);

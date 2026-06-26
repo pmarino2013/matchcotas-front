@@ -30,6 +30,7 @@ const App = () => {
   const pasarMascota = () => {
     const nextIndex = index + 1 < mascotas.length ? index + 1 : 0;
     setIndex(nextIndex);
+    console.log(nextIndex);
   };
 
   const addMatches = async () => {
@@ -37,8 +38,11 @@ const App = () => {
       mascota_id: mascotas[index]._id,
     };
     await actualizarMacota(mascotas[index]._id, { match: true });
-    await agregarMatches(datos);
     setCountMatches(countMatches + 1);
+    if (index > 0) {
+      setIndex(index - 1);
+    }
+    await agregarMatches(datos);
   };
 
   const deleteMatches = async (idMascota, idMatch) => {
