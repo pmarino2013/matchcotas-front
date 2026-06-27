@@ -39,9 +39,13 @@ const App = () => {
     };
     await actualizarMacota(mascotas[index]._id, { match: true });
     setCountMatches(countMatches + 1);
-    if (index > 0) {
-      setIndex(index - 1);
+
+    if (index < mascotas.length - 1) {
+      setIndex(index);
+    } else {
+      setIndex(0);
     }
+
     await agregarMatches(datos);
   };
 
