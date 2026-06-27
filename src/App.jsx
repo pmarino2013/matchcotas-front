@@ -30,7 +30,6 @@ const App = () => {
   const pasarMascota = () => {
     const nextIndex = index + 1 < mascotas.length ? index + 1 : 0;
     setIndex(nextIndex);
-    console.log(nextIndex);
   };
 
   const addMatches = async () => {
