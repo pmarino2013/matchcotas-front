@@ -1,18 +1,60 @@
-# React + Vite
+# MatchCotas - Aplicación frontend de ejemplo para emparejar mascotas.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Descripción**: Proyecto frontend en React + Vite que muestra mascotas y matches.
 
-Currently, two official plugins are available:
+**Prerequisitos**
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **Node**: versión 18+ recomendada.
+- **Gestor de paquetes**: `pnpm` (recomendado), `npm` o `yarn` funcionan.
 
-## React Compiler
+**Instalación**
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+1. Clonar el repositorio:
 
-Note: This will impact Vite dev & build performances.
+```bash
+git clone <repo-url>
+cd matchcotas-front
+```
 
-## Expanding the ESLint configuration
+2. Instalar dependencias (con `pnpm` recomendado):
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```bash
+pnpm install
+# o con npm
+npm install
+```
+
+3. Levantar servidor de desarrollo:
+
+```bash
+pnpm dev
+# o
+npm run dev
+```
+
+**Scripts útiles**
+
+- **dev**: `pnpm dev` — inicia Vite en modo desarrollo.
+- **build**: `pnpm build` — crea la build de producción.
+- **preview**: `pnpm preview` — sirve la build de producción localmente.
+- **lint**: `pnpm lint` — ejecuta ESLint.
+
+**Estructura principal**
+
+- **src/**: código fuente React.
+- **src/components/**: componentes UI (ej.: [src/components/BoxMatchesApp.jsx](src/components/BoxMatchesApp.jsx#L1)).
+- **src/helpers/**: funciones de fetch (ej.: [src/helpers/fetchMascotas.js](src/helpers/fetchMascotas.js#L1)).
+- **public/**: assets públicos.
+
+**Notas de desarrollo**
+
+- El entry principal es `src/main.jsx`.
+- Usar ESLint configurado en `eslint.config.js` para mantener consistencia.
+
+**Contribuir**
+
+- Crear una rama por feature, hacer PRs claros y añadir descripciones.
+
+**Autor**
+
+- Pablo Marino

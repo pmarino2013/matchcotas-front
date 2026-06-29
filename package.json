@@ -2,6 +2,7 @@
   "name": "matchcotas",
   "private": true,
   "version": "0.0.0",
+  "author": "Pablo Marino",
   "type": "module",
   "scripts": {
     "dev": "vite",
